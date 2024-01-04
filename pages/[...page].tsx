@@ -7,6 +7,10 @@ import { BuilderContent } from '@builder.io/sdk';
 import { GetStaticProps } from 'next';
 import '../builder-registry';
 
+// import Header and Footer
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 // Define a function that fetches the Builder
@@ -63,11 +67,16 @@ export default function Page({ page }: { page: BuilderContent | null }) {
   // the BuilderComponent with the page content
   return (
     <>
+
+    {/* Place Header Here */}
       <Head>
         <title>{page?.data?.title}</title>
       </Head>
       {/* Render the Builder page */}
+      < Header />
       <BuilderComponent model="page" content={page || undefined} />
+      {/* Place Footer Here */}
+      < Footer />
     </>
   );
 }
